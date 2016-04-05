@@ -1,0 +1,24 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:listing_reports) %>
+<% end %>
+
+<table class="index">
+  <thead>
+    <tr data-hook="reports_header">
+      <th><%= Spree.t(:name) %></th>
+      <th><%= Spree.t(:description) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |key, value| %>
+    <tr data-hook="reports_row">
+      <td class="align-center"><%= link_to value[:name], send("#{key}_admin_reports_url".to_sym) %></td>
+      <td style="padding-left:1em"><%= value[:description] %></td>
+    </tr>
+    <% end %>
+    <tr data-hook="reports_row">
+      <td class="align-center"><%= link_to "Back in Stock Stats", "/admin/reports/back_in_stock_stats.csv" %></td>
+      <td style="padding-left:1em">Back in stock stats CSV download</td>
+    </tr>
+  </tbody>
+</table>

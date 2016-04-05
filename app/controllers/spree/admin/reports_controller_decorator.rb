@@ -135,4 +135,10 @@ Spree::Admin::ReportsController.class_eval do
     @report = Spree::AdvancedReport::TransactionReport.new(params)
     base_report_top_render("transactions")
   end
+
+  def back_in_stock_stats
+    respond_to do |format|
+      format.csv { send_data BackInStock.stats_as_csv }
+    end
+  end
 end
