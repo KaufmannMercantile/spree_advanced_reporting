@@ -141,4 +141,10 @@ Spree::Admin::ReportsController.class_eval do
       format.csv { send_data BackInStock.stats_as_csv }
     end
   end
+
+  def past_month_sales
+    respond_to do |format|
+      format.csv { send_data ExportOrders.now! }
+    end
+  end
 end

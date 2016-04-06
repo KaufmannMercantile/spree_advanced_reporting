@@ -39,5 +39,8 @@
   match '/admin/reports/back_in_stock_stats' => 'admin/reports#back_in_stock_stats', :via => [:get, :post],
                                                                     :as => 'back_in_stock_stats_admin_reports'
 
+  match '/admin/reports/past_month_sales.csv' => 'admin/reports#past_month_sales', :via => [:get, :post],
+                                                                    :as => 'past_month_sales_admin_reports'
+
   match "/admin/reports/dashboard" => "admin/advanced_report_overview#index", :as => 'dashboard_admin_reports'
 end
